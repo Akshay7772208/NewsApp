@@ -1,26 +1,24 @@
-// Import necessary modules
+
+import 'react-native-gesture-handler';
 import React from 'react';
-import {View, SafeAreaView, StyleSheet } from 'react-native';
-import QRCodeScreen from './screens/qrcodeScanner';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import ArticleScreen from './screens/ArticleScreen';
 
-
+const Stack = createStackNavigator();
 
 const App = () => {
- 
   return (
-    <SafeAreaView style={styles.container}>
-        <QRCodeScreen/>  
-    </SafeAreaView>
-    
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Article" component={ArticleScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-
 export default App;
+
+
